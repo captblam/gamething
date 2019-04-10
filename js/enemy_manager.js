@@ -4,7 +4,6 @@ game.EnemyManager = me.Container.extend({
         this.COLS = 9;
         this.ROWS = 4;
         this.vel = 16;
-		this.Waves = 0;
     },
 
     createEnemies: function () {
@@ -15,7 +14,6 @@ game.EnemyManager = me.Container.extend({
         }
         this.createdEnemies = true;
         this.updateChildBounds();
-		this.Waves++;
     },
 
     onActivateEvent: function () {
@@ -57,12 +55,4 @@ game.EnemyManager = me.Container.extend({
         this._super(me.Container, "update", [time]);
         this.updateChildBounds();
     }
-	
-	chooseEnemy: function () 
-	{
-        var enem = ~~(Math.random() * 2);
-        //this.renderable.addAnimation("idle", [frame], 1);
-        //this.renderable.setCurrentAnimation("idle");
-    }
-	
 });
