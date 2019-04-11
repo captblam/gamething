@@ -22,7 +22,7 @@ game.Laser = me.Entity.extend({
     onCollision: function (res, other) {
         if (other.body.collisionType === me.collision.types.ENEMY_OBJECT) {
             me.game.world.removeChild(this);
-            game.playScreen.enemyManager.removeChild(other);
+            //game.playScreen.enemy_manager.removeChild(other);
             return true;
         }
     },

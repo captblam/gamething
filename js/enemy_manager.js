@@ -4,6 +4,7 @@ game.EnemyManager = me.Container.extend({
         this.COLS = 9;
         this.ROWS = 4;
         this.vel = 16;
+		this.waves = 0;
     },
 
     createEnemies: function () {
@@ -12,8 +13,10 @@ game.EnemyManager = me.Container.extend({
                 this.addChild(me.pool.pull("enemy", i * 64, j * 64));
             }
         }
+		
         this.createdEnemies = true;
         this.updateChildBounds();
+		this.waves++;
     },
 
     onActivateEvent: function () {
@@ -44,13 +47,18 @@ game.EnemyManager = me.Container.extend({
     },
 
     removeChildNow: function (child) {
+		
+		
+		
         this._super(me.Container, "removeChildNow", [child]);
+		
         this.updateChildBounds();
     },
 
     update: function (time) {
         if (this.children.length === 0 && this.createdEnemies) {
-            game.playScreen.reset();
+            //game.playScreen.reset();
+			this.createEnemies();
         }
         this._super(me.Container, "update", [time]);
         this.updateChildBounds();

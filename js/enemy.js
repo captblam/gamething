@@ -23,5 +23,15 @@ game.Enemy = me.Entity.extend({
         this.body.update();
 
         return true;
-    }
-});
+    },
+	
+	onCollision: function (res, other) {
+        if (other.body.collisionType === me.collision.types.PROJECTILE_OBJECT) {
+            game.playScreen.enemyManager.removeChild(this);
+           
+            return true;
+        }
+    },
+	
+	
+})	
